@@ -1,0 +1,28 @@
+CREATE TABLE ShoeStore (id INTEGER PRIMARY KEY, price INTEGER, name TEXT, quantity INTEGER, size TEXT, rating INTEGER);
+
+INSERT INTO ShoeStore VALUES (1, "30", "heels", "15", "medium", "5");
+INSERT INTO ShoeStore VALUES (2, "30", "heels", "15", "large", "4");
+INSERT INTO ShoeStore VALUES (3, "30", "heels", "15", "small", "5");
+INSERT INTO ShoeStore VALUES (4, "14", "sneakers", "20", "small", "5");
+INSERT INTO ShoeStore VALUES (5, "14", "sneakers", "20", "medium", "5");
+INSERT INTO ShoeStore VALUES (6, "14", "sneakers", "20", "large", "5");
+INSERT INTO ShoeStore VALUES (7, "14", "sneakers", "20", "xlarge", "5");
+INSERT INTO ShoeStore VALUES (8, "7", "flip_flops", "8", "small", "4");
+INSERT INTO ShoeStore VALUES (9, "7", "flip_flops", "8", "medium", "4");
+INSERT INTO ShoeStore VALUES (10, "7", "flip_flops", "8", "large", "5");
+INSERT INTO ShoeStore VALUES (11, "7", "flip_flops", "8", "xlarge", "5");
+INSERT INTO ShoeSTore VALUES (12, "12", "wedge", "13", "small", "4");
+INSERT INTO ShoeStore VALUES (13, "12", "wedge", "13", "medium", "5");
+INSERT INTO ShoeStore VALUES (14, "12", "wedge", "13", "large", "5");
+INSERT INTO ShoeStore VALUES (15, "12", "wedge", "13", "xlarge", "5");
+
+SELECT * FROM ShoeSTore;
+
+--display the database ordered by price.
+SELECT * FROM ShoeStore ORDER BY price;
+
+--What is the minimum rating for the all the shoes
+SELECT MIN(rating) FROM ShoeStore;
+
+--displays all items priced higher than 13 dollars ordered by price.
+SELECT * FROM ShoeStore WHERE price > 13 ORDER BY price
