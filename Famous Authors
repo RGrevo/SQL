@@ -1,0 +1,46 @@
+CREATE TABLE authors (id INTEGER PRIMARY KEY , name TEXT, age TEXT, instagram TEXT);
+
+INSERT INTO authors (name, age, instagram) VALUES ("Colleen Hoover", 43, @colleenhoover);
+INSERT INTO authors (name, age, instagram) VALUES ("Janet Evanovich", 79, @janetevanoich);
+INSERT INTO authors (name, age, instagram) VALUES ("James Patterson", 75, @jamespattersonbooks);
+INSERT INTO authors (name, age, instagram) VALUES ("Emily Calandrelli", 35, @thespacegal);
+INSERT INTO authors (name, age, instagram) VALUES ("Mary Kubica", 36, @marykubica);
+
+CREATE TABLE books_written (id INTEGER PRIMARY KEY, title TEXT, author_id INTEGER, pages INTEGER, style TEXT);
+
+INSERT INTO books_written (title, author_id, pages, style) VALUES ("It Ends With US", 1, 376, "fiction");
+INSERT INTO books_written (title, author_id, pages, style) VALUES ("It Starts With Us", 1, 336, "fiction");
+INSERT INTO books_written (title, author_id, pages, style) VALUES ("Going Rogue", 2, 336, "fiction");
+INSERT INTO books_written (title, author_id, pages, style) VALUES ("Game On", 2, 304, "fiction");
+INSERT INTO books_written (title, author_id, pages, style) VALUES ("Triple Cross", 3, 496, "fiction");
+INSERT INTO books_written (title, author_id, pages, style) VALUES ("Ada Lace", 4, 94, "fiction");
+INSERT INTO books_written (title, author_id, pages, style) VALUES ("Local Woman Missing", 5, 353, "fiction");
+
+CREATE TABLE best_sellerlist (id INTEGER PRIMARY KEY, seller_id INTEGER, title TEXT, week_list INTEGER);
+
+INSERT INTO best_sellerlist (title, seller_id, week_list) VALUES ("It Ends With Us", 1, 73);
+INSERT INTO best_sellerlist (title, seller_id, week_list) VALUES ("It Starts With Us", 1, 3);
+INSERT INTO best_sellerlist (title, seller_id, week_list) VALUES ("Triple Cross", 3, 2);
+INSERT INTO best_sellerlist (title, seller_id, week_list) VALUES ("Going Rogue", 2, 1);
+
+-Displays authors name from table one with titles of books from table two by using Inner join-
+SELECT authors.name, books_written.title
+FROM authors
+Join books_written
+ON books_written.author_id = authors.id;
+
+-Displays name of author and if they are on best sellers list using lft outer join. utilizing null in place of no best seller-
+SELECT authors.name, best_sellerlist.title AS best_seller_list
+FROM authors
+LEFT OUTER JOIN best_sellerlist
+ON best_sellerlist.seller_id = authors.id;
+
+-Displays authors name and the number of weeks they have been at number one on the best sellers list -
+SELECT authors.name, best_sellerlist.week_list FROM best_sellerlist
+JOIN authors
+ON best_sellerlist.seller_id = authors.id;
+
+- Displays authors name, book title and number of weeks on best sellers list -
+SELECT authors.name, best_sellerlist.title, best_sellerlist.week_list FROM best_sellerlist
+JOIN authors
+ON best_sellerlist.seller_id = authors.id
